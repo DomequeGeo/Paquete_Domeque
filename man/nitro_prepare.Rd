@@ -7,10 +7,10 @@
 nitro_prepare(df)
 }
 \arguments{
-\item{df}{data.frame con x, y y nitrogeno_suelo}
+\item{df}{data.frame con columnas x, y y nitrogeno_suelo}
 }
 \value{
-data.frame limpio
+data.frame limpio, con valores de nitrogeno_suelo convertidos, duplicados eliminados y sin NA
 }
 \description{
 Limpia los datos y convierte unidades de cg/kg a g/kg
