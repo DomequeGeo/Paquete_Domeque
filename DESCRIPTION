@@ -1,17 +1,11 @@
 Package: evaluacion
-Type: Package
-Title: Funciones para preparar e interpolar nitrógeno en suelo
+Title: Evaluación de datos de nitrógeno en suelos
 Version: 0.0.0.9000
 Authors@R: person("Marcos", "Domeque", email = "820935@unizar.es", role = c("aut", "cre"))
-Description: Paquete que contiene funciones para limpiar y preparar datos de nitrógeno en suelo 
-             y realizar interpolación IDW sobre un raster base.
-License: MIT
+Description: Paquete para preparar y interpolar datos de nitrógeno en suelos. 
+    Incluye funciones para limpieza de datos y cálculo de interpolación IDW.
+License: MIT + file LICENSE
 Encoding: UTF-8
-LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
-Imports:
-    dplyr,
-    gstat,
-    terra
-R (>= 4.1.0)
+Depends: R (>= 4.1.0)

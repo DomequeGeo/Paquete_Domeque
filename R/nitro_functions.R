@@ -65,3 +65,8 @@ if(FALSE){
   plot(idw_raster, main="Interpolación IDW de nitrógeno")
 }
 
+# install.packages("fs")
+# install.packages("devtools")
+# install.packages("usethis")
+
+library(devtools)
