@@ -2,7 +2,9 @@
 % Please edit documentation in R/nitro_functions.R
 \name{nitro_prepare}
 \alias{nitro_prepare}
-\title{Preparar datos de nitrógeno}
+\title{\enumerate{
+\item Preparar datos de nitrógeno
+}}
 \usage{
 nitro_prepare(df)
 }
@@ -10,8 +12,16 @@ nitro_prepare(df)
 \item{df}{data.frame con columnas x, y y nitrogeno_suelo}
 }
 \value{
-data.frame limpio, con valores de nitrogeno_suelo convertidos, duplicados eliminados y sin NA
+data.frame limpio, con valores de nitrogeno_suelo convertidos, sin duplicados y sin NA
 }
 \description{
 Limpia los datos y convierte unidades de cg/kg a g/kg
+}
+\examples{
+df <- data.frame(
+  x = c(1,2,3),
+  y = c(4,5,6),
+  nitrogeno_suelo = c(200,300,400)
+)
+nitro_prepare(df)
 }

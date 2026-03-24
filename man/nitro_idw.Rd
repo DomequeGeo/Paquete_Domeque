@@ -2,7 +2,9 @@
 % Please edit documentation in R/nitro_functions.R
 \name{nitro_idw}
 \alias{nitro_idw}
-\title{Interpolación IDW de nitrógeno}
+\title{\enumerate{
+\item Interpolación IDW de nitrógeno
+}}
 \usage{
 nitro_idw(df, raster_base)
 }
@@ -12,8 +14,21 @@ nitro_idw(df, raster_base)
 \item{raster_base}{raster de referencia (SpatRaster) para la interpolación}
 }
 \value{
-raster interpolado (SpatRaster) con valores de nitrógeno estimados
+raster interpolado con valores de nitrógeno estimados
 }
 \description{
 Realiza interpolación IDW usando coordenadas x, y y valores de nitrogeno_suelo
+}
+\examples{
+library(terra)
+df <- data.frame(
+  x = c(1,2,3),
+  y = c(4,5,6),
+  nitrogeno_suelo = c(200,300,400)
+)
+df <- nitro_prepare(df)
+r <- rast(nrows=5, ncols=5, xmin=0, xmax=5, ymin=0, ymax=5)
+values(r) <- 1
+resultado <- nitro_idw(df, r)
+plot(resultado)
 }
