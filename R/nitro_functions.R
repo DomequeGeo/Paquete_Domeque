@@ -1,7 +1,9 @@
 # nitro_functions.R
+# Para realizar este paquete, me he basado en el script creado para el trabajo de la asignatura de Geoestadística
+
 # Funciones para preparar e interpolar datos de nitrógeno en suelo
 
-#' Preparar datos de nitrógeno
+#' 1.Preparar datos de nitrógeno
 #'
 #' Limpia los datos y convierte unidades de cg/kg a g/kg
 #'
@@ -16,17 +18,18 @@ nitro_prepare <- function(df){
   return(df)
 }
 
-#' Interpolación IDW de nitrógeno
+#' 2.Interpolación IDW de nitrógeno
 #'
 #' Realiza interpolación IDW usando coordenadas x, y y valores de nitrogeno_suelo
 #'
-#' @param df data.frame con columnas x, y y nitrogeno_suelo
-#' @param raster_base raster de referencia (SpatRaster) para la interpolación
+#' @param df
+#' @param raster_base raster de referencia para la interpolación
 #'
-#' @return raster interpolado (SpatRaster) con valores de nitrógeno estimados
+#' @return raster interpolado con valores de nitrógeno estimados
 #' @importFrom gstat gstat
 #' @importFrom terra interpolate mask rast
 #' @export
+
 nitro_idw <- function(df, raster_base){
   gs <- gstat::gstat(
     formula = nitrogeno_suelo ~ 1,
@@ -42,13 +45,14 @@ nitro_idw <- function(df, raster_base){
   return(idw)
 }
 
-# Ejemplo de uso (opcional, se puede quitar en producción)
+# Ejemplo de uso:
+
 if(FALSE){
   library(dplyr)
   library(gstat)
   library(terra)
 
-  # Preparar datos
+# Preparar datos
   df <- data.frame(
     x = c(1,2,3),
     y = c(4,5,6),
@@ -57,10 +61,10 @@ if(FALSE){
   df_clean <- nitro_prepare(df)
   print(df_clean)
 
-  # Crear raster de ejemplo
+# Crear raster de ejemplo
   r <- rast(nrows=3, ncols=3, xmin=0, xmax=3, ymin=0, ymax=3)
 
-  # Interpolación IDW
+# Interpolación IDW
   idw_raster <- nitro_idw(df_clean, r)
   plot(idw_raster, main="Interpolación IDW de nitrógeno")
 }
